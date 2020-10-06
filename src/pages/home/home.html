@@ -1,14 +1,31 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="primary">
+    <ion-title align="center" style="text-transform: uppercase;">
+      QR Code Generator
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+  <ion-item class="inplab">
+    <ion-input type="text" placeholder=" QR DATA" [(ngModel)]="qrData"></ion-input>
+  </ion-item>
+ 
+  <ion-label align="center">
+    <button ion-button class="code" icon-left (click)="createCode()">
+      <ion-icon name="barcode"></ion-icon>Generate code
+    </button>
+  
+    <button ion-button class="code" color="secondary" icon-left (click)="generate()">
+      <ion-icon name="refresh"></ion-icon>Generate New
+    </button>
+  </ion-label>
+
+ <ion-card *ngIf="createdCode">
+   <ngx-qrcode [value]="createdCode">
+   </ngx-qrcode>
+   <ion-card-content>
+    <h4>{{createdCode}}</h4>
+  </ion-card-content>
+ </ion-card>
 </ion-content>
